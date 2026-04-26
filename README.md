@@ -96,7 +96,4 @@ GEMINI_MODEL="gemini-2.0-flash"
 - `PATCH /tasks/{task_id}`
 - `GET /leaderboard`
 
-## Demo video
-
-- Placeholder: _(add Loom/Drive link here)_
 
