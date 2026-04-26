@@ -1,37 +1,46 @@
-# CampusConnect: Scaling Communities through Data-Driven Advocacy
+# CampusConnect
+### Scaling Communities through Data-Driven Advocacy
 
-**CampusConnect** is a centralized platform for managing Campus Ambassadors with an integrated **AI GitHub Auditor**.
-It upgrades CA programs from spreadsheets into an **ROI-positive growth engine**—with measurable outcomes, leaderboards, and recruiter-ready developer coaching.
+CampusConnect is a **startup-grade Campus Ambassador Management Platform** with an integrated **AI GitHub Auditor**.
+It turns CA programs from spreadsheets into an **ROI-positive growth engine**—with measurable progress, gamified execution, and recruiter-ready coaching.
 
-## Why it wins hackathons
+## What you get
 
-- **GitHub Pulse (Impact)**: 1–100 recruiter-style score + 3 actionable tips in seconds
-- **Smart Task Workflow (Technical)**: structured growth tasks with status tracking
-- **Leaderboard (Innovation)**: rank ambassadors by GitHub strength + completion
-- **Premium UX (Design)**: dark, high-contrast (Slate-950 / Cyan-400), motion-first UI
+- **GitHub Pulse**: fetch GitHub repo signals → **Recruiter-Ready Score (1–100)** + **3 actionable tips**
+- **Smart Tasks**: structured growth tasks (todo → doing → done) tracked per ambassador
+- **Leaderboard**: real-time ranking by **GitHub strength + completion points**
+- **Premium UX**: dark, high-contrast (Slate-950 / Cyan-400) with motion-first micro-interactions
+
+## Screens (add screenshots)
+
+- `docs/screenshots/landing.png`
+- `docs/screenshots/pulse.png`
+- `docs/screenshots/tasks.png`
+- `docs/screenshots/leaderboard.png`
 
 ## Architecture (Decoupled Microservices)
 
-- **Frontend**: Next.js (App Router) + Tailwind CSS + Framer Motion
-- **Backend**: FastAPI (Python)
-- **Database**: MongoDB Atlas (optional; demo mode works without it)
-- **AI Engine**: Gemini (optional; falls back to a fast heuristic score)
+```
+Next.js (apps/web)  ──fetch──►  FastAPI (services/api)  ──► MongoDB Atlas
+         ▲                          │
+         └──────── UI ──────────────┴──► GitHub API + Gemini (optional)
+```
 
-## Live features
+## Product routes
 
 - **Landing**: `/`
 - **GitHub Pulse**: `/pulse`
-- **Tasks**: `/tasks`
+- **Smart Tasks**: `/tasks`
 - **Leaderboard**: `/leaderboard`
 
 ## Repo structure
 
-- `apps/web` — Next.js frontend
-- `services/api` — FastAPI backend
+- `apps/web` — Next.js 16 (App Router) + Tailwind + Framer Motion + Lucide + dark-mode
+- `services/api` — FastAPI + GitHub fetcher + Gemini scoring (optional) + Mongo (optional)
 
 ## Quickstart (Windows)
 
-### 1) Backend
+### Backend (FastAPI)
 
 ```powershell
 cd services\api
@@ -40,7 +49,12 @@ python -m venv .venv
 .\.venv\Scripts\uvicorn services.api.app.main:app --reload --port 8000
 ```
 
-### 2) Frontend
+Verify:
+
+- `http://127.0.0.1:8000/health`
+- `http://127.0.0.1:8000/github/pulse?username=octocat`
+
+### Frontend (Next.js)
 
 ```powershell
 cd apps\web
@@ -61,12 +75,26 @@ Create **local** env files (never commit them):
 Backend `.env` example:
 
 ```env
+# Optional Mongo (persists tasks + leaderboard)
 MONGODB_URI="mongodb+srv://..."
 MONGODB_DB="campusconnect"
-GITHUB_TOKEN="ghp_..."
-GEMINI_API_KEY="..."
+
+# Optional GitHub token (higher rate limits)
+GITHUB_TOKEN="your_token"
+
+# Optional Gemini (better recruiter tips)
+GEMINI_API_KEY="your_key"
 GEMINI_MODEL="gemini-2.0-flash"
 ```
+
+## API endpoints (minimal)
+
+- `GET /health`
+- `GET /github/pulse?username={handle}`
+- `GET /tasks?ambassador_username={handle}`
+- `POST /tasks`
+- `PATCH /tasks/{task_id}`
+- `GET /leaderboard`
 
 ## Demo video
 
