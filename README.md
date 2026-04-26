@@ -57,7 +57,4 @@ GITHUB_TOKEN="ghp_..."
 GEMINI_API_KEY="..."
 ```
 
-## Demo video
-
-- Recording placeholder: _(add link here)_
 
