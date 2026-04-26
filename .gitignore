@@ -1,0 +1,42 @@
+# Monorepo ignores
+**/node_modules/
+**/.next/
+**/out/
+**/dist/
+**/build/
+**/.turbo/
+**/.vercel/
+**/.cache/
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+**/.env/
+
+# Environment / secrets (never commit)
+**/.env*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.crt
+**/credentials*.json
+**/service-account*.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
