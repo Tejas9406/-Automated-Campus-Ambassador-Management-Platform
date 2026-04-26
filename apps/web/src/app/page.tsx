@@ -1,64 +1,91 @@
-import Image from "next/image";
+import { Topbar } from "@/components/topbar";
+import { Container } from "@/components/ui/container";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen bg-[radial-gradient(60%_60%_at_50%_0%,rgba(34,211,238,0.18),rgba(2,6,23,0)_70%)]">
+      <Topbar />
+      <main className="py-14">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300 shadow-[0_0_0_1px_rgba(148,163,184,0.15)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                UnsaidTalks Hackathon Build
+              </div>
+              <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl">
+                Recruiter-ready ambassadors, measured in real outcomes.
+              </h1>
+              <p className="text-pretty text-base leading-7 text-slate-300">
+                CampusConnect centralizes ambassador management and upgrades every
+                profile with GitHub Pulse—an AI recruiter score + growth tasks
+                that compound.
+              </p>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <a
+                  href="/pulse"
+                  className="rounded-2xl bg-white/5 p-4 shadow-[0_0_0_1px_rgba(148,163,184,0.15)] hover:bg-white/7 transition-colors"
+                >
+                  <div className="text-sm font-medium text-slate-100">
+                    GitHub Pulse
+                  </div>
+                  <div className="mt-1 text-xs text-slate-400">
+                    Score + 3 tips
+                  </div>
+                </a>
+                <a
+                  href="/tasks"
+                  className="rounded-2xl bg-white/5 p-4 shadow-[0_0_0_1px_rgba(148,163,184,0.15)] hover:bg-white/7 transition-colors"
+                >
+                  <div className="text-sm font-medium text-slate-100">
+                    Growth Tasks
+                  </div>
+                  <div className="mt-1 text-xs text-slate-400">
+                    Track progress
+                  </div>
+                </a>
+                <a
+                  href="/leaderboard"
+                  className="rounded-2xl bg-white/5 p-4 shadow-[0_0_0_1px_rgba(148,163,184,0.15)] hover:bg-white/7 transition-colors"
+                >
+                  <div className="text-sm font-medium text-slate-100">
+                    Leaderboard
+                  </div>
+                  <div className="mt-1 text-xs text-slate-400">
+                    Real-time rank
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div className="rounded-3xl bg-gradient-to-b from-white/8 to-white/3 p-6 shadow-[0_0_0_1px_rgba(148,163,184,0.18)]">
+              <div className="rounded-2xl bg-slate-950/60 p-5 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.12)]">
+                <div className="text-xs font-medium text-slate-400">
+                  Recruiter-Ready Score
+                </div>
+                <div className="mt-2 flex items-end gap-3">
+                  <div className="text-5xl font-semibold tracking-tight text-cyan-300">
+                    72
+                  </div>
+                  <div className="pb-1 text-sm text-slate-300">
+                    + 3 actionable upgrades
+                  </div>
+                </div>
+                <div className="mt-5 space-y-2 text-sm text-slate-300">
+                  <div className="rounded-xl bg-white/5 px-3 py-2">
+                    Add demo GIF + quickstart to top repos.
+                  </div>
+                  <div className="rounded-xl bg-white/5 px-3 py-2">
+                    Pin 3 projects that show ownership.
+                  </div>
+                  <div className="rounded-xl bg-white/5 px-3 py-2">
+                    Add impact metrics (users, time saved, latency).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
       </main>
     </div>
   );
